@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Title</th>
+    <th scope="col">Duration</th>
+    <th scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let course of (courses$ | async); let i = index">
+    <app-course-list-item [course]="course" [index]="i"></app-course-list-item>
+  </tr>
+  </tbody>
+</table>

@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: "about", component: AboutComponent
   },
+  {
+    path: "course-list",
+    loadChildren: () => import('./course-list/course-list.module').then(m => m.CourseListModule)
+  }
 
 
 ];
