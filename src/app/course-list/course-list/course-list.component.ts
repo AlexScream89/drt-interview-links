@@ -8,7 +8,7 @@ import { CourseListService } from "../shared/providers/course-list.service";
 })
 export class CourseListComponent implements OnInit {
 
-  courses$;
+  courses;
 
   constructor(private courseListService: CourseListService) {}
 
@@ -16,8 +16,18 @@ export class CourseListComponent implements OnInit {
     this.getAllCourses();
   }
 
-  private getAllCourses() {
-    this.courses$ = this.courseListService.getAllCourses();
+  onFilterChange(filter: string) {
+    this.getAllCourses(filter);
+  }
+
+  onDeleteCourse(id: number, index: number) {
+    this.courseListService.deleteCourse(id)
+      .subscribe(() => this.courses.splice(index, 1));
+  }
+
+  private getAllCourses(filter: string = '') {
+    this.courseListService.getAllCourses(filter)
+      .subscribe(courses => this.courses = courses);
   }
 
 }

@@ -9,8 +9,15 @@ export class CourseListService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAllCourses() {
-    return this.httpClient.get(`${environment.apiUrl}/courses`)
+  getAllCourses(query: string = '') {
+    return this.httpClient.get(`${environment.apiUrl}/courses?q=${query}`)
+      .pipe(
+        catchError(error => of(throwError(error)))
+      );
+  }
+
+  deleteCourse(id: number) {
+    return this.httpClient.delete(`${environment.apiUrl}/courses/${id}`)
       .pipe(
         catchError(error => of(throwError(error)))
       );
