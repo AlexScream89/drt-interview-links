@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Router } from "@angular/router";
+import { Course } from "../shared/models/Course";
 
 @Component({
   selector: 'app-course-list-item',
@@ -7,9 +9,15 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 })
 export class CourseListItemComponent {
 
-  @Input() course;
-  @Input() index;
+  @Input() course: Course;
+  @Input() index: number;
   @Output() delete: EventEmitter<void> = new EventEmitter();
+
+  constructor(private router: Router) {}
+
+  onEdit() {
+    this.router.navigate([`course-list/edit/${this.course.id}`]);
+  }
 
   onDelete() {
     this.delete.emit();

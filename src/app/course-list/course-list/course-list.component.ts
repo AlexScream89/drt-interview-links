@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseListService } from "../shared/providers/course-list.service";
+import { Router } from "@angular/router";
+import { Course } from "../shared/models/Course";
 
 @Component({
   selector: 'app-course-list',
@@ -8,12 +10,19 @@ import { CourseListService } from "../shared/providers/course-list.service";
 })
 export class CourseListComponent implements OnInit {
 
-  courses;
+  courses: Course[];
 
-  constructor(private courseListService: CourseListService) {}
+  constructor(
+    private courseListService: CourseListService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getAllCourses();
+  }
+
+  onAddCourse() {
+    this.router.navigate(['/course-list/create']);
   }
 
   onFilterChange(filter: string) {
@@ -27,7 +36,7 @@ export class CourseListComponent implements OnInit {
 
   private getAllCourses(filter: string = '') {
     this.courseListService.getAllCourses(filter)
-      .subscribe(courses => this.courses = courses);
+      .subscribe((courses: Course[]) => this.courses = courses);
   }
 
 }

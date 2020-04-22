@@ -1,3 +1,7 @@
 :host {
   display: contents;
 }
+
+.edit-button {
+  margin-left: 10px;
+}

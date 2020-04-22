@@ -1,13 +1,18 @@
 <app-course-list-search (filterChange)="onFilterChange($event)"></app-course-list-search>
 
+<div class="input-group mb-3">
+  <button class="btn btn-success" (click)="onAddCourse()">Add new course</button>
+</div>
+
 <table class="table">
   <thead>
   <tr>
     <th scope="col">#</th>
     <th scope="col">Title</th>
     <th scope="col">Duration</th>
+    <th scope="col">Duration Unit</th>
     <th scope="col">Description</th>
-    <th scope="col">Action</th>
+    <th scope="col">Actions</th>
   </tr>
   </thead>
   <tbody>

@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <label for="title">Course title</label>
+    <input formControlName="title" type="text" class="form-control" id="title" placeholder="Course title">
+  </div>
+  <div class="form-group">
+    <label for="duration">Course duration</label>
+    <input formControlName="duration" type="text" class="form-control" id="duration" placeholder="Course duration">
+  </div>
+  <div class="form-group">
+    <label for="durationUnit">Course duration unit</label>
+    <input formControlName="durationUnit" type="text" class="form-control" id="durationUnit" placeholder="Course duration unit">
+  </div>
+  <div class="form-group">
+    <label for="title">Course description</label>
+    <input formControlName="description" type="text" class="form-control" id="description" placeholder="Course description">
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>

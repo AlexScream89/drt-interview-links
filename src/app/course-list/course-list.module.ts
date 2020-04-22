@@ -7,9 +7,15 @@ import { HttpClientModule } from "@angular/common/http";
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';
 import { CourseListSearchComponent } from './course-list-search/course-list-search.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CourseListItemFormComponent } from './course-list-item-form/course-list-item-form.component';
 
 @NgModule({
-  declarations: [CourseListComponent, CourseListItemComponent, CourseListSearchComponent],
+  declarations: [
+    CourseListComponent,
+    CourseListItemComponent,
+    CourseListSearchComponent,
+    CourseListItemFormComponent
+  ],
   imports: [
     CommonModule,
     CourseListRoutingModule,
