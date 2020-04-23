@@ -1,4 +1,4 @@
-export class Course {
+export interface Course {
   id: number;
   title: string;
   duration: number;

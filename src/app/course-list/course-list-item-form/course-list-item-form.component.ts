@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
 import { CourseListService } from "../shared/providers/course-list.service";
@@ -15,6 +15,7 @@ export class CourseListItemFormComponent implements OnInit, OnDestroy {
   course: Course;
   form: FormGroup;
   isEditPage = false;
+  isSubmitted = false;
   unsubscribe$ = new EventEmitter();
 
   constructor(
@@ -52,6 +53,10 @@ export class CourseListItemFormComponent implements OnInit, OnDestroy {
   }
 
   submitForm() {
+    this.isSubmitted = true;
+    if (!this.form.valid) {
+      return;
+    }
     if (this.isEditPage) {
       this.onEditCourse();
     } else {
@@ -76,10 +81,10 @@ export class CourseListItemFormComponent implements OnInit, OnDestroy {
 
   private createForm(course = null) {
     this.form = this.formBuilder.group({
-      title: this.formBuilder.control(course ? course.title : ''),
-      duration: this.formBuilder.control(course ? course.duration : ''),
-      durationUnit: this.formBuilder.control(course ? course.durationUnit : ''),
-      description: this.formBuilder.control(course ? course.description : '')
+      title: this.formBuilder.control(course ? course.title : '', Validators.required),
+      duration: this.formBuilder.control(course ? course.duration : '', Validators.required),
+      durationUnit: this.formBuilder.control(course ? course.durationUnit : '', Validators.required),
+      description: this.formBuilder.control(course ? course.description : '', Validators.required)
     });
   }
 

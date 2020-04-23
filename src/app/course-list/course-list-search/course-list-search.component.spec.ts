@@ -24,4 +24,9 @@ describe('CourseListSearchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should display a #filter input`, () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#filter').textContent).toBeDefined();
+  });
 });
