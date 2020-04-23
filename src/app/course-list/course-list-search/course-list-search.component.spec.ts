@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseListSearchComponent } from './course-list-search.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 describe('CourseListSearchComponent', () => {
   let component: CourseListSearchComponent;
@@ -8,6 +9,7 @@ describe('CourseListSearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule],
       declarations: [ CourseListSearchComponent ]
     })
     .compileComponents();
